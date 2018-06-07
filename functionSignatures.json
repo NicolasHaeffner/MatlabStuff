@@ -1,0 +1,45 @@
+{
+"ll":
+{
+	"inputs":
+	[
+		{"name":"varargin", "kind":"optional", "type":"folderpath"}
+	]
+},
+"dirtree":
+{
+    "inputs":
+    [
+        {"name":"varargin", "kind":"optional", "type":"folderpath"}
+    ]
+},
+"mv":
+{
+    "inputs":
+    [
+        {"name":"SOURCE", "kind":"required", "type":"filepath"},
+        {"name":"DESTINATION", "kind":"required", "type":"filepath"}
+    ]
+},
+"rm":
+{
+    "inputs":
+    [
+        {"name":"filename", "kind":"required", "type":"filepath"}
+    ]
+},
+"addsubpath":
+{
+    "inputs":
+    [
+        {"name":"basepath", "kind":"required", "type":"folderpath"}
+    ]
+},
+"workon":
+{
+    "inputs":
+    [
+        {"name":"basepath", "kind":"required", "type":"folderpath"}
+    ]
+}
+}

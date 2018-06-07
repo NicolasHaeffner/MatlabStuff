@@ -1,9 +1,19 @@
 function dirtree(varargin)
+%dirtree [-n LIMIT] [directory]: Show tree of Directory
 
-    if isempty(varargin)
+
+    iin = 1;
+    limit = 3;
+
+    if length(varargin) > 1 && strcmp(varargin{iin}, '-n')
+        limit = str2num(varargin{2});
+        iin = iin+2;
+    end
+
+    if length(varargin) < iin
         basedir = pwd;
     else
-        basedir = varargin{1};
+        basedir = fullfile(pwd, strip(varargin{iin}, '\'));
     end
     
     [~, basename, ~] = fileparts(basedir);
@@ -26,6 +36,8 @@ function dirtree(varargin)
             else
                 directory{level,2} = directory{level,2} +1;
             end
+        elseif level >= limit
+            position = position+1;
         else
             level = level+1;
             directory{level,1} = subdir;
@@ -42,7 +54,7 @@ function [subdir, position] = printTillDir(subdir, offs, level)
     for i = (offs):length(base)
         position=position+1;
         if ~(strcmp(base(i).name(1), '.') || strcmp(base(i).name, '..'))
-            printSub(base(i).name, level)
+            printSub(base(i).name, level, i == length(base))
             if base(i).isdir
                 subdir = fullfile(subdir, base(i).name);
                 break
@@ -51,11 +63,15 @@ function [subdir, position] = printTillDir(subdir, offs, level)
     end
 end
 
-function printSub(name, level)
+function printSub(name, level, islast)
 
         for i = 1:level-1
            fprintf('|   ')
         end
-        fprintf('|-- %s\n',name)
+        if islast
+            fprintf('`-- %s\n',name)
+        else
+            fprintf('|-- %s\n',name)
+        end
     
 end
