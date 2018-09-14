@@ -1,4 +1,11 @@
 function workon(basepath)
+%workon - tool for project management
+%   needs done.m and addsubpath.m
+%   
+%   workon [projectpath] will cd into the path and will add the path and all subfolders to the path
+%   It prints the last 5 commits if git is initialized
+%   It "locks" the project with the use of the environment variable 'PROJECT', so that only one project can be loaded.
+%   Use "done" to finish working on the project.
     
     recproj = getenv('PROJECT');
 
@@ -25,6 +32,7 @@ function workon(basepath)
             run(fullfile(cd, 'init.m'));
             fprintf('\n\n');
         end
+
     else
         fprintf('Another project already loaded, finish first using done\n');
     end
