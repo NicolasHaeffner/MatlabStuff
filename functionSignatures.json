@@ -41,5 +41,12 @@
     [
         {"name":"basepath", "kind":"required", "type":"folderpath"}
     ]
+},
+"code":
+{
+    "inputs":
+    [
+        {"name":"filename", "kind":"required", "type":"filepath"}
+    ]
 }
 }
