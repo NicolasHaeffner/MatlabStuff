@@ -1,7 +1,6 @@
 function dirtree(varargin)
 %dirtree [-n LIMIT] [directory]: Show tree of Directory
 
-
     iin = 1;
     limit = 3;
 
@@ -44,9 +43,7 @@ function dirtree(varargin)
             directory{level,2} = 1;
         end
     end
-
 end
-
 
 function [subdir, position] = printTillDir(subdir, offs, level)
     base = dir(subdir);
@@ -64,14 +61,12 @@ function [subdir, position] = printTillDir(subdir, offs, level)
 end
 
 function printSub(name, level, islast)
-
         for i = 1:level-1
-           fprintf('|   ')
+            fprintf('|   ')
         end
         if islast
             fprintf('`-- %s\n',name)
         else
             fprintf('|-- %s\n',name)
         end
-    
 end
